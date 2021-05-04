@@ -16,6 +16,7 @@ const CountryListPage: FC = () => {
   const { data, status, isFetching } = useCountryListQuery(
     { filter: { continent: { eq: selectedContinent } } },
     {
+      staleTime: Infinity,
       onError: (err) => {
         console.error('[CountryListPage::useCountryListQuery]', err)
       },

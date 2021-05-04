@@ -34,7 +34,7 @@ const ModalDialog: FC<IModalDialogProps> = ({
       isOpen={isOpen}
       onDismiss={onDismiss}
     >
-      <DialogContainer {...delegated}>
+      <DialogContainer aria-label={title} {...delegated}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

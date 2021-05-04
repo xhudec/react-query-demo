@@ -12,6 +12,7 @@ export interface ICountryFilterProps {
 
 const CountryFilter: FC<ICountryFilterProps> = ({ filterValue, setFilterValue }) => {
   const { data, isFetching } = useContinentListQuery(undefined, {
+    staleTime: Infinity,
     onError: (err) => {
       console.error('[CountryFilter::useContinentListQuery]', err)
     },
