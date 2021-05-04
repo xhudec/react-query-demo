@@ -1,0 +1,22 @@
+overwrite: true
+schema: 'https://countries.trevorblades.com'
+documents: 'src/**/*.gql'
+generates:
+  src/generated/types.ts:
+    - typescript
+
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: generated/types.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-query
+    config:
+      skipTypename: true
+      fetcher:
+        endpoint: 'process.env.REACT_APP_GRAPHQL_API_URL'
+        fetchParams:
+          headers:
+            Content-Type: 'application/json'
