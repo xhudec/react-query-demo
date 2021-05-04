@@ -149,6 +149,17 @@ code {
 #root {
   isolation: isolate;
 }
+
+:root {
+  --color-black: hsl(0, 0%, 0%);
+  --color-gray-100: hsl(0, 0%, 90%);
+  --color-gray-300: hsl(0, 0%, 80%);
+  --color-gray-500: hsl(0, 0%, 40%);
+  --color-gray-700: hsl(0, 0%, 20%);
+  --color-white: hsl(0, 0%, 100%);
+  --text-color: var(--color-black);
+  --bg-color: var(--color-white);
+}
 `
 
 export default GlobalStyle
