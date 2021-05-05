@@ -5,9 +5,17 @@ import { CountryDetailQuery, useCountryDetailQuery } from './graphql/CountryDeta
 
 import ModalDialog, { IModalDialogProps } from 'components/ModalDialog'
 import Button from 'components/Button'
+import Loading from 'components/Loading'
 import { ValuePairContainer, ValuePairLabel, ValuePairValue } from 'components/styled'
 
 import { CountryListQuery } from 'pages/CountryList/graphql/CountryList.generated'
+
+// TODO: move to some utils + make the icon size controllable
+const renderValue = (value: string | null | undefined, isLoading: boolean, fallback = '-') => {
+  if (value) return value
+
+  return isLoading ? <Loading size={14} /> : fallback
+}
 
 export interface ICountryDetailDialogProps extends Pick<IModalDialogProps, 'isOpen' | 'onDismiss'> {
   countryCode: string | null
@@ -69,26 +77,31 @@ const CountryDetailDialog: FC<ICountryDetailDialogProps> = ({
       <>
         <ValuePairContainer>
           <ValuePairLabel>Capital City: </ValuePairLabel>
-          <ValuePairValue>{data?.country?.capital ?? '-'}</ValuePairValue>
+          <ValuePairValue>{renderValue(data?.country?.capital, isFetching)}</ValuePairValue>
         </ValuePairContainer>
         <ValuePairContainer>
           <ValuePairLabel>Continent: </ValuePairLabel>
-          <ValuePairValue>{data?.country?.continent?.name ?? '-'}</ValuePairValue>
+          <ValuePairValue>{renderValue(data?.country?.continent?.name, isFetching)}</ValuePairValue>
         </ValuePairContainer>
         <ValuePairContainer>
           <ValuePairLabel>Currency: </ValuePairLabel>
-          <ValuePairValue>{data?.country?.currency ?? '-'}</ValuePairValue>
+          <ValuePairValue>{renderValue(data?.country?.currency, isFetching)}</ValuePairValue>
         </ValuePairContainer>
         <ValuePairContainer>
           <ValuePairLabel>Phone number prefix: </ValuePairLabel>
-          <ValuePairValue>+{data?.country?.phone ?? '-'}</ValuePairValue>
+          <ValuePairValue>
+            {renderValue(data?.country?.phone ? `+${data.country.phone}` : null, isFetching)}
+          </ValuePairValue>
         </ValuePairContainer>
         <ValuePairContainer>
           <ValuePairLabel>Spoken languages: </ValuePairLabel>
           <ValuePairValue>
-            {data?.country?.languages
-              ?.map((language) => `${language.name} (${language.native})`)
-              .join(', ') ?? '-'}
+            {renderValue(
+              data?.country?.languages
+                ?.map((language) => `${language.name} (${language.native})`)
+                .join(', '),
+              isFetching
+            )}
           </ValuePairValue>
         </ValuePairContainer>
       </>

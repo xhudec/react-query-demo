@@ -3,8 +3,6 @@ query CountryList($filter: CountryFilterInput) {
     code
     name
     native
-    capital
-    currency
     emoji
   }
 }

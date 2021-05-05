@@ -1,13 +1,14 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 
 import Header from 'components/Header'
-import { Heading, PageContent } from 'components/styled'
+import { CustomLink, Heading, PageContent } from 'components/styled'
 
 const HomePage: FC = () => {
   return (
     <div>
-      <Header>Example App</Header>
+      <Header>
+        <CustomLink to="/">Example App</CustomLink>
+      </Header>
 
       <PageContent>
         <Heading>PageContent</Heading>
@@ -15,7 +16,10 @@ const HomePage: FC = () => {
         <nav>
           <ol>
             <li>
-              <Link to="/country-list">Country list</Link>
+              <CustomLink to="/country-list">Country list</CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/rick-and-morty">Rick and Morty</CustomLink>
             </li>
           </ol>
         </nav>

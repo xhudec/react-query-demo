@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const PageContent = styled.main`
@@ -11,6 +12,15 @@ const Heading = styled.h1`
   font-weight: bold;
 
   margin-bottom: 16px;
+`
+
+const CustomLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: revert;
+  }
 `
 
 const ValuePairContainer = styled.div`
@@ -33,4 +43,4 @@ const ValuePairValue = styled.span`
   font-weight: 700;
 `
 
-export { PageContent, Heading, ValuePairContainer, ValuePairLabel, ValuePairValue }
+export { PageContent, Heading, CustomLink, ValuePairContainer, ValuePairLabel, ValuePairValue }

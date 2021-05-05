@@ -7,7 +7,8 @@ import useDetailDialog from './hooks/useDetailDialog'
 import { useCountryListQuery } from './graphql/CountryList.generated'
 
 import Header from 'components/Header'
-import { Heading, PageContent } from 'components/styled'
+import { CustomLink, Heading, PageContent } from 'components/styled'
+import Loading from 'components/Loading'
 
 const CountryListPage: FC = () => {
   const [selectedContinent, setSelectedContinent] = useState('EU')
@@ -25,14 +26,16 @@ const CountryListPage: FC = () => {
 
   return (
     <div>
-      <Header>Example App</Header>
+      <Header>
+        <CustomLink to="/">Example App</CustomLink>
+      </Header>
 
       <PageContent>
         <Heading>Country List{isFetching ? '...' : ''}</Heading>
 
         <CountryFilter filterValue={selectedContinent} setFilterValue={setSelectedContinent} />
 
-        {status === 'loading' ? <p>Loading...</p> : null}
+        {status === 'loading' ? <Loading /> : null}
         {status === 'success' && data ? (
           <CountryListView queryData={data} dispatch={dispatch} />
         ) : null}
