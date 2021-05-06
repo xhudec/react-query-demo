@@ -27,7 +27,7 @@ const CountryListPage: FC = () => {
   return (
     <div>
       <Header>
-        <CustomLink to="/">Example App</CustomLink>
+        <CustomLink to="/">React Query Demo</CustomLink>
       </Header>
 
       <PageContent>

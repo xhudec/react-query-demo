@@ -1,27 +1,35 @@
 import { FC } from 'react'
 
+import { NavigationList, NavigationListItem } from './styled'
+
 import Header from 'components/Header'
 import { CustomLink, Heading, PageContent } from 'components/styled'
+import ROUTES from 'config/routes'
 
 const HomePage: FC = () => {
   return (
     <div>
       <Header>
-        <CustomLink to="/">Example App</CustomLink>
+        <CustomLink to="/">React Query Demo</CustomLink>
       </Header>
 
       <PageContent>
-        <Heading>PageContent</Heading>
+        <Heading>Examples</Heading>
 
         <nav>
-          <ol>
-            <li>
-              <CustomLink to="/country-list">Country list</CustomLink>
-            </li>
-            <li>
-              <CustomLink to="/rick-and-morty">Rick and Morty</CustomLink>
-            </li>
-          </ol>
+          <NavigationList>
+            <NavigationListItem>
+              <CustomLink to={ROUTES.rickAndMorty}>Rick and Morty (REST)</CustomLink>
+            </NavigationListItem>
+
+            <NavigationListItem>
+              <CustomLink to={ROUTES.rickAndMorty}>Rick and Morty (GraphQL)</CustomLink>
+            </NavigationListItem>
+
+            <NavigationListItem>
+              <CustomLink to={ROUTES.countryList}>Country list (GraphQL codegen)</CustomLink>
+            </NavigationListItem>
+          </NavigationList>
         </nav>
       </PageContent>
     </div>

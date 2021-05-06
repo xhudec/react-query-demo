@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 
 import HomePage from 'pages/HomePage'
 import CountryListPage from 'pages/CountryList'
-import RickAndMortyPage from 'pages/RickAndMortyList'
+import RickAndMortyListPage from 'pages/RickAndMortyList'
 import ROUTES from 'config/routes'
 
 const Routing: FC = () => {
@@ -18,7 +18,7 @@ const Routing: FC = () => {
       </Route>
 
       <Route exact path={ROUTES.rickAndMorty}>
-        <RickAndMortyPage />
+        <RickAndMortyListPage />
       </Route>
 
       <Redirect to="/" />
