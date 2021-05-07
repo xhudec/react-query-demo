@@ -2,7 +2,7 @@ import { Dispatch, FC } from 'react'
 
 import { CountryTagContainer, CountryTagFlagContainer, CountryTagName } from './styled'
 
-import { TDetailDialogAction } from 'pages/CountryList/hooks/useDetailDialog'
+import { TDetailDialogAction } from 'pages/countries/CountryList/hooks/useDetailDialog'
 
 export interface ICountryTagProps {
   code: string

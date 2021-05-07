@@ -25,7 +25,15 @@ export interface IRickAndMortyPaginationInfo {
   prev: string | null
 }
 
+export interface IUseRickAndMortyCharacterListQueryVariables {
+  page: number
+}
+
 export interface IFetchRickAndMortyCharacterListResponse {
   info: IRickAndMortyPaginationInfo
   results: IRickAndMortyCharacter[]
+}
+
+export interface IFetchRickAndMortyCharacterListGraphQLResponse {
+  characters: IFetchRickAndMortyCharacterListResponse
 }

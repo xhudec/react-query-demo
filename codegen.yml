@@ -16,7 +16,7 @@ generates:
     config:
       skipTypename: true
       fetcher:
-        endpoint: 'process.env.REACT_APP_GRAPHQL_API_URL'
+        endpoint: 'process.env.REACT_APP_COUNTRY_API_URL'
         fetchParams:
           headers:
             Content-Type: 'application/json'

@@ -1,9 +1,11 @@
 import { FC } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-import HomePage from 'pages/HomePage'
-import CountryListPage from 'pages/CountryList'
-import RickAndMortyListPage from 'pages/RickAndMortyList'
+import HomePage from 'pages/Home'
+import CountryListPage from 'pages/countries/CountryList'
+import RickAndMortyListRESTPage from 'pages/rick-and-morty/RickAndMortyListREST'
+import RickAndMortyListGraphQLPage from 'pages/rick-and-morty/RickAndMortyListGraphQL'
+
 import ROUTES from 'config/routes'
 
 const Routing: FC = () => {
@@ -13,13 +15,18 @@ const Routing: FC = () => {
         <HomePage />
       </Route>
 
-      <Route exact path={ROUTES.countryList}>
+      <Route exact path={ROUTES.rickAndMortyRest}>
+        <RickAndMortyListRESTPage />
+      </Route>
+      <Route exact path={ROUTES.rickAndMortyGraphQL}>
+        <RickAndMortyListGraphQLPage />
+      </Route>
+      <Redirect exact from={ROUTES.rickAndMortyBase} to={ROUTES.rickAndMortyRest} />
+
+      <Route exact path={ROUTES.countryListGraphQL}>
         <CountryListPage />
       </Route>
-
-      <Route exact path={ROUTES.rickAndMorty}>
-        <RickAndMortyListPage />
-      </Route>
+      <Redirect exact from={ROUTES.countryListBase} to={ROUTES.countryListGraphQL} />
 
       <Redirect to="/" />
     </Switch>

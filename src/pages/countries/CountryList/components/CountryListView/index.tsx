@@ -3,8 +3,8 @@ import { Dispatch, FC } from 'react'
 import CountryTag from './components/CountryTag'
 import { CountryListContainer } from './styled'
 
-import { CountryListQuery } from 'pages/CountryList/graphql/CountryList.generated'
-import { TDetailDialogAction } from 'pages/CountryList/hooks/useDetailDialog'
+import { CountryListQuery } from 'pages/countries/CountryList/graphql/CountryList.generated'
+import { TDetailDialogAction } from 'pages/countries/CountryList/hooks/useDetailDialog'
 
 export interface ICountryListViewProps {
   queryData: CountryListQuery

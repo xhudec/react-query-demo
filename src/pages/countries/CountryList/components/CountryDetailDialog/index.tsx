@@ -8,7 +8,7 @@ import Button from 'components/Button'
 import Loading from 'components/Loading'
 import { ValuePairContainer, ValuePairLabel, ValuePairValue } from 'components/styled'
 
-import { CountryListQuery } from 'pages/CountryList/graphql/CountryList.generated'
+import { CountryListQuery } from 'pages/countries/CountryList/graphql/CountryList.generated'
 
 // TODO: move to some utils + make the icon size controllable
 const renderValue = (value: string | null | undefined, isLoading: boolean, fallback = '-') => {

@@ -1,7 +1,12 @@
 const ROUTES = {
   home: '/',
-  countryList: '/country-list',
-  rickAndMorty: '/rick-and-morty',
+
+  rickAndMortyBase: '/rick-and-morty',
+  rickAndMortyRest: '/rick-and-morty/rest',
+  rickAndMortyGraphQL: '/rick-and-morty/graphql',
+
+  countryListBase: '/country-list',
+  countryListGraphQL: '/country-list/graphql',
 } as const
 
 export default ROUTES

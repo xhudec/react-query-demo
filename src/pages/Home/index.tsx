@@ -19,15 +19,15 @@ const HomePage: FC = () => {
         <nav>
           <NavigationList>
             <NavigationListItem>
-              <CustomLink to={ROUTES.rickAndMorty}>Rick and Morty (REST)</CustomLink>
+              <CustomLink to={ROUTES.rickAndMortyRest}>Rick and Morty (REST)</CustomLink>
             </NavigationListItem>
 
             <NavigationListItem>
-              <CustomLink to={ROUTES.rickAndMorty}>Rick and Morty (GraphQL)</CustomLink>
+              <CustomLink to={ROUTES.rickAndMortyGraphQL}>Rick and Morty (GraphQL)</CustomLink>
             </NavigationListItem>
 
             <NavigationListItem>
-              <CustomLink to={ROUTES.countryList}>Country list (GraphQL codegen)</CustomLink>
+              <CustomLink to={ROUTES.countryListGraphQL}>Countries (GraphQL codegen)</CustomLink>
             </NavigationListItem>
           </NavigationList>
         </nav>

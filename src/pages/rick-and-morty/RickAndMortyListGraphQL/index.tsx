@@ -1,16 +1,16 @@
 import { FC } from 'react'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
-import CharacterListView from './components/CharacterListView'
-import { PaginationControlButton } from './styled'
-import usePagination from './hooks/usePagination'
+import CharacterListView from '../components/CharacterListView'
+import usePagination from '../hooks/usePagination'
+import { PaginationControlButton } from '../components/styled'
 
 import Header from 'components/Header'
 import { CustomLink, Heading, PageContent } from 'components/styled'
-import useRickAndMortyCharacterListQuery from 'api/rest/rickAndMortyCharacterList'
+import useRickAndMortyCharacterListQuery from 'api/graphql/rickAndMortyCharacterList'
 import ROUTES from 'config/routes'
 
-const RickAndMortyListPage: FC = () => {
+const RickAndMortyListGraphQLPage: FC = () => {
   const { page, previousPage, nextPage } = usePagination()
 
   const { data, isFetching } = useRickAndMortyCharacterListQuery(
@@ -35,7 +35,7 @@ const RickAndMortyListPage: FC = () => {
         <CustomLink to={ROUTES.home}>React Query Demo</CustomLink>
       </Header>
       <PageContent>
-        <Heading>Rick and Morty Characters{isFetching ? '...' : ''}</Heading>
+        <Heading>Rick and Morty Characters (GraphQL) {isFetching ? '...' : ''}</Heading>
 
         <div>
           <PaginationControlButton
@@ -63,4 +63,4 @@ const RickAndMortyListPage: FC = () => {
   )
 }
 
-export default RickAndMortyListPage
+export default RickAndMortyListGraphQLPage

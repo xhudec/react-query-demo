@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components/macro'
+import { keyframes } from 'styled-components'
 
 const spinningAnimation = keyframes`
   0% {

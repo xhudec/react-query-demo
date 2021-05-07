@@ -4,7 +4,7 @@ import CharacterCard from './components/CharacterCard'
 import PlaceholderCard from './components/PlaceholderCard'
 import { CharacterList } from './styled'
 
-import { IRickAndMortyCharacter } from 'api/rest/types'
+import { IRickAndMortyCharacter } from 'api/types'
 
 export interface ICharacterListViewProps {
   characters: IRickAndMortyCharacter[]

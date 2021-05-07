@@ -1,30 +1,41 @@
 import { QueryFunctionContext, useQuery, UseQueryOptions } from 'react-query'
+import request, { gql } from 'graphql-request'
 
 import {
+  IFetchRickAndMortyCharacterListGraphQLResponse,
   IFetchRickAndMortyCharacterListResponse,
   IUseRickAndMortyCharacterListQueryVariables,
-} from '../types'
-
+} from 'api/types'
 import env from 'config/env'
+
+const RickAndMortyCharacterListQuery = gql`
+  query CharacterList($page: Int) {
+    characters(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        image
+      }
+    }
+  }
+`
 
 const fetchRickAndMortyCharacterList = async ({ queryKey }: QueryFunctionContext) => {
   const [, { page }] = queryKey as [string, IUseRickAndMortyCharacterListQueryVariables]
-  const searchParams = new URLSearchParams({ page: `${page}` })
 
-  const response = await fetch(
-    `${env.rickAndMortyApiUrl}/api/character?${searchParams.toString()}`,
-    {
-      method: 'GET',
-    }
+  const response = await request<IFetchRickAndMortyCharacterListGraphQLResponse>(
+    `${env.rickAndMortyApiUrl}/graphql`,
+    RickAndMortyCharacterListQuery,
+    { page }
   )
 
-  if (!response.ok) {
-    console.error('[fetchRickAndMortyCharacterList]', response)
-
-    throw new Error('Failed to fetch Rick and Morty characters.')
-  }
-
-  return (await response.json()) as IFetchRickAndMortyCharacterListResponse
+  return response.characters
 }
 
 const useRickAndMortyCharacterListQuery = (
@@ -32,11 +43,10 @@ const useRickAndMortyCharacterListQuery = (
   options?: UseQueryOptions<IFetchRickAndMortyCharacterListResponse, Error>
 ) => {
   return useQuery(
-    ['RickAndMortyCharacterListREST', variables],
+    ['RickAndMortyCharacterListGraphQL', variables],
     fetchRickAndMortyCharacterList,
     options
   )
 }
 
 export default useRickAndMortyCharacterListQuery
-export { fetchRickAndMortyCharacterList }
