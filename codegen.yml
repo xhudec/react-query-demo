@@ -1,3 +1,6 @@
+# @see https://www.graphql-code-generator.com/docs/getting-started/codegen-config
+# @see https://www.graphql-code-generator.com/docs/plugins/typescript-react-query
+
 overwrite: true
 schema: 'https://countries.trevorblades.com'
 documents: 'src/**/*.gql'
@@ -16,7 +19,14 @@ generates:
     config:
       skipTypename: true
       fetcher:
+        # Fetcher configuration
+        # @see https://www.graphql-code-generator.com/docs/plugins/typescript-react-query#using-fetch-with-codegen-configuration
         endpoint: 'process.env.REACT_APP_COUNTRY_API_URL'
         fetchParams:
           headers:
             Content-Type: 'application/json'
+
+        # Custom Fetcher
+        # @see https://www.graphql-code-generator.com/docs/plugins/typescript-react-query#usage-example-isreacthook-true
+        # func: 'api/useFetchData#useFetchData'
+        # isReactHook: true
