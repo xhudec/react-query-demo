@@ -1,6 +1,7 @@
 import { QueryFunctionContext, useQuery, UseQueryOptions } from 'react-query'
 
 import {
+  EQueryKeys,
   IFetchRickAndMortyCharacterListResponse,
   IUseRickAndMortyCharacterListQueryVariables,
 } from '../types'
@@ -32,7 +33,7 @@ const useRickAndMortyCharacterListQuery = (
   options?: UseQueryOptions<IFetchRickAndMortyCharacterListResponse, Error>
 ) => {
   return useQuery(
-    ['RickAndMortyCharacterListREST', variables],
+    [EQueryKeys.RickAndMortyCharacterListREST, variables],
     fetchRickAndMortyCharacterList,
     options
   )

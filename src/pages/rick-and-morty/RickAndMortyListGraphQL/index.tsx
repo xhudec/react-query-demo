@@ -13,19 +13,11 @@ import ROUTES from 'config/routes'
 const RickAndMortyListGraphQLPage: FC = () => {
   const { page, previousPage, nextPage } = usePagination()
 
-  const { data, isFetching } = useRickAndMortyCharacterListQuery(
+  const { data, isFetching, isPreviousData } = useRickAndMortyCharacterListQuery(
     { page },
     {
-      cacheTime: Infinity,
-      placeholderData: {
-        info: {
-          count: 0,
-          pages: 0,
-          prev: null,
-          next: null,
-        },
-        results: Array(20).fill(null),
-      },
+      staleTime: Infinity,
+      keepPreviousData: true,
     }
   )
 
@@ -35,7 +27,7 @@ const RickAndMortyListGraphQLPage: FC = () => {
         <CustomLink to={ROUTES.home}>React Query Demo</CustomLink>
       </Header>
       <PageContent>
-        <Heading>Rick and Morty Characters (GraphQL) {isFetching ? '...' : ''}</Heading>
+        <Heading>Rick and Morty Characters (GraphQL){isFetching ? '...' : null}</Heading>
 
         <div>
           <PaginationControlButton
@@ -51,7 +43,7 @@ const RickAndMortyListGraphQLPage: FC = () => {
 
           <PaginationControlButton
             type="button"
-            disabled={!data?.info?.next}
+            disabled={isPreviousData || !data?.info?.next}
             position="right"
             onClick={nextPage}
           >

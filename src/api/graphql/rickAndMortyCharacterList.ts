@@ -2,6 +2,7 @@ import { QueryFunctionContext, useQuery, UseQueryOptions } from 'react-query'
 import request, { gql } from 'graphql-request'
 
 import {
+  EQueryKeys,
   IFetchRickAndMortyCharacterListGraphQLResponse,
   IFetchRickAndMortyCharacterListResponse,
   IUseRickAndMortyCharacterListQueryVariables,
@@ -43,7 +44,7 @@ const useRickAndMortyCharacterListQuery = (
   options?: UseQueryOptions<IFetchRickAndMortyCharacterListResponse, Error>
 ) => {
   return useQuery(
-    ['RickAndMortyCharacterListGraphQL', variables],
+    [EQueryKeys.RickAndMortyCharacterListGraphQL, variables],
     fetchRickAndMortyCharacterList,
     options
   )

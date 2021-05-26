@@ -16,7 +16,7 @@ const RickAndMortyListRESTPage: FC = () => {
   const { data, isFetching } = useRickAndMortyCharacterListQuery(
     { page },
     {
-      cacheTime: Infinity,
+      staleTime: Infinity,
       placeholderData: {
         info: {
           count: 0,
@@ -35,7 +35,7 @@ const RickAndMortyListRESTPage: FC = () => {
         <CustomLink to={ROUTES.home}>React Query Demo</CustomLink>
       </Header>
       <PageContent>
-        <Heading>Rick and Morty Characters (REST) {isFetching ? '...' : ''}</Heading>
+        <Heading>Rick and Morty Characters (REST){isFetching ? '...' : null}</Heading>
 
         <div>
           <PaginationControlButton

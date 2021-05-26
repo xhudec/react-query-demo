@@ -1,3 +1,8 @@
+export enum EQueryKeys {
+  RickAndMortyCharacterListREST = 'RickAndMortyCharacterListREST',
+  RickAndMortyCharacterListGraphQL = 'RickAndMortyCharacterListGraphQL',
+}
+
 export interface IRickAndMortyLocation {
   name: string
   url: string
