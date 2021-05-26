@@ -116,5 +116,11 @@ module.exports = {
      * @see https://github.com/react-hook-form/react-hook-form/issues/2887
      */
     '@typescript-eslint/unbound-method': 'off',
+
+    /**
+     * too harsh for demo
+     */
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 }
