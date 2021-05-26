@@ -14,6 +14,7 @@ const HeaderContainer = styled.header`
 
 const HeaderContent = styled.div`
   max-width: 1080px;
+  padding: 0 16px;
   margin: auto;
   font-size: 1.25rem;
 `

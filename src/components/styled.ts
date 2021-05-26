@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 
 const PageContent = styled.main`
   max-width: 1080px;
+  padding: 16px;
   margin: auto;
 `
 
